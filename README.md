@@ -54,26 +54,3 @@ To get up and going as quickly as possible, here are some guides to help you get
 |:--- | :--- | :--- |
 | Please go over the [Getting started guide](GettingStarted.md) to learn more about getting off the ground quickly. | Please go over the [Contributing guidelines](CONTRIBUTING.md) to learn more about the process and thinking. | Check out the recent updates for Windows Mixed reality in the [Fall Creators update](/FallCreatorsUpdate.md) |
 
-# Examples and QuickStart scenes
-The MRTK includes many great samples and starter scenes to demonstrate the uses of the MRTK API, these include:
-
-| [![Motion Controller tests](External/ReadMeImages/MRTK_MotionControllerTest.jpg)](/Assets/HoloToolkit-Examples) [Motion Controller tests](/Assets/HoloToolkit-Examples) | [![Input manager tests](External/ReadMeImages/MRTK_InputManagerTest.jpg)](/Assets/HoloToolkit-Examples) [Input manager tests](/Assets/HoloToolkit-Examples) | [![Grab Mechanics demo](External/ReadMeImages/MRTK_GrabMechanics.jpg)](/Assets/HoloToolkit-Examples/MotionControllers-GrabMechanics) [Grab Mechanics demo](/Assets/HoloToolkit-Examples/MotionControllers-GrabMechanics) |
-|:--- | :--- | :--- |
-| Motion controller test scene demonstrating controller input events | Several gaze interaction demos such as popups, buttons and more |   Examples of direct manipulation with Motion Controllers (IHMD Only) |
-| [![Interactable Objects](External/ReadMeImages/MRTK_InteractableObject.jpg)](/Assets/HoloToolkit-Examples/UX/Readme/README_InteractableObjectExample.md) [Interactable Objects](/Assets/HoloToolkit-Examples/UX/Readme/README_InteractableObjectExample.md) | [![Object Collection](External/ReadMeImages/MRTK_ObjectCollection.jpg)](/Assets/HoloToolkit-Examples/UX/Readme/README_ObjectCollection.md) [Object Collection](/Assets/HoloToolkit-Examples/UX/Readme/README_ObjectCollection.md) | [![App Bar and Bounding Box](External/ReadMeImages/MRTK_AppBar_BoundingBox.jpg)](/Assets/HoloToolkit-Examples/UX/Scenes) App Bar and Bounding Box |
-| Example of modular and extensible interactable objects with visual states, including Holographic button  | Object collection helps you lay out an array of objects in a three-dimensional shape | **[Coming Soon]** Standard UI for move/rotate/scale 3D objects |
-| [![Keyboard input sample](External/ReadMeImages/MRTK_Keyboard.jpg)](/Assets/HoloToolkit-Examples) [Keyboard input sample](/Assets/HoloToolkit-Examples) | [![Interactive button demos](External/ReadMeImages/MRTK_InteractiveButtons.jpg)](/Assets/HoloToolkit-Examples/UX/Readme/README_InteractiveButtonComponents.md) [Interactive button demos](/Assets/HoloToolkit-Examples/UX/Readme/README_InteractiveButtonComponents.md) | [![Scene occulsion demo](External/ReadMeImages/MRTK_OcclusionExample.jpg)](/Assets/HoloToolkit-Examples) [Scene occlusion demo](/Assets/HoloToolkit-Examples) |
-| A sample virtual keyboard, similar to system keyboard in Windows Mixed Reality shell  | Example UI buttons and controls for use in Mixed Reality | Scene construction demo on how to make occluded windows |
-
-Check out the [Examples](/Assets/HoloToolkit-Examples) folder for more details.
-
-**External\How To** docs folder is meant to help everyone with migrating forward or any simple doubts they might have about the process.
-Please feel free to grow all these sections. We can't wait to see your additions!
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). 
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-# Useful resources on Microsoft Windows Dev Center
-| ![Academy](External/ReadMeImages/icon_academy.png) [Academy](https://developer.microsoft.com/en-us/windows/mixed-reality/academy)| ![Design](External/ReadMeImages/icon_design.png) [Design](https://developer.microsoft.com/en-us/windows/mixed-reality/design)| ![Development](External/ReadMeImages/icon_development.png) [Development](https://developer.microsoft.com/en-us/windows/mixed-reality/development)| ![Community)](External/ReadMeImages/icon_community.png) [Community](https://developer.microsoft.com/en-us/windows/mixed-reality/community)|
-| :--------------------- | :----------------- | :------------------ | :------------------------ |
-| See code examples. Do a coding tutorial. Watch guest lectures.          | Get design guides. Build user interface. Learn interactions and input.     | Get development guides. Learn the technology. Understand the science.       | Join open source projects. Ask questions on forums. Attend events and meetups. |
