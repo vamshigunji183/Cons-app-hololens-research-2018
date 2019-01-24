@@ -1,166 +1,191 @@
-# Cons-App-hololens-2018
-# Getting started with the Mixed Reality Toolkit
+This document describes how to prepare your work environment to use MixedRealityToolkit-Unity in your Unity 3D project.
 
-![](/Documentation/ReadMeImages/MRTK_Logo_Rev.png)
+# 1. Check your Windows 10 version
+It is recommended to be running the Windows 10 Fall Creators update for modern Windows Universal apps targeting Mixed Reality Headsets
 
-The Mixed Reality Toolkit (MRTK) is a new platform for building your Mixed Reality experiences for Virtual Reality (VR) and Augmented Reality (AR), aimed at accelerating your content production by removing any of the common complexities that complicate projects in a true multi-platform / multi-vr solution.
-The MRTK solves this by providing a common logical platform to build your dream, together with a rich set of services and SDK components for building your project.  Al these components are geared towards the new MRTK platform that abstracts out all the different ways that each platform delivers its experience.
+This can be verified by running the "WinVer" application from the Windows Run command
 
-## Prerequisites
+`Windows Key + R -> WinVer`
 
-To get started with the Mixed Reality Toolkit you will need:
+Which will display a new window as follows:
 
-* [Unity 2018.2.13f1 +](https://unity3d.com/get-unity/download/archive)
-* [Latest MRTK release (Beta)](https://github.com/Microsoft/MixedRealityToolkit-Unity/releases)
-* A dream
+![Windows Version dialog](/External/ReadMeImages/WindowsVersionFCU.png)
 
-## Upgrading from the HoloToolkit (HTK)
+If you are not running the Windows 10 Fall Creators update, then you will need to Update your version of Windows.
 
-There is not a direct upgrade path from the HoloToolkit to the new Mixed Reality Toolkit due to the rebuilt framework.  However, it is possible to import the MRTK into your HoloToolkit project and start work migrating your implementation if you wish.
+# 2. Setting up your development environment
+Be sure to enable Developer mode for Windows 10 via:
 
-> The Mixed Reality Team will release a guide in the future on the key differences between HTK and MRTK project implementations.
+`Action Center -> All Settings -> Update & Security -> For Developers -> Enable Developer mode`
 
-Our recommendation is that if you have an existing HTK project, then it is best to continue with the HTK as it is still a robust and feature rich platform for building HoloLens projects.
+![Enable Developer Mode](/External/ReadMeImages/EnableDevModeWin10.PNG "Enable Developer Mode for Windows 10")
 
-If you are building a new Mixed Reality solution, then we encourage you to join us on the MRTK journey. Some of our key contributors are already building production-ready solutions already utilizing the MRTK and using their experiences to enrich the toolkit moving forward.
+If you have not already, download and install [Visual Studio 2017](https://www.visualstudio.com/vs/) and these required components:
 
-## Starting your new project
+- Windows Universal Platform Development Workload
+- Windows SDK 10.16299.10
+- Visual Studio Tools for Unity
+- msbuild
+- Nuget Package Manager
 
-We have done an incredible amount of work to ensure the new project experience is as streamlined as possible.  To this end, we endeavoured to get you up and running as fast as possible.
+![Visual Studio Components](/External/ReadMeImages/VisualStudioComponents.PNG)
 
-To get your first project up and running, the steps are as follows:
+You can install more components and UWP SDK's as you wish.
 
-### 1. Create your new project (or start a new scene in your current project)
+Make sure you are running the appropriate version of Unity 3D on your machine. You should [download and install the latest version](https://unity3d.com/get-unity/download/archive) this project says it supports on the [main readme page](/README.md).
 
-> *Note* when creating a new project with Unity 2018, Unity gives you several templates to choose from.  Currently the **MRTK does not yet support the Scriptable Render Pipeline**, so the LWSRP, HDSRP and VRSRP projects are not compatible with MRTK projects.  Please stay tuned to the MRTK GitHub site for future announcements on SRP support.
+[unity-release]:             https://unity3d.com/unity/whats-new/unity-2017.2.1
+[unity-version-badge]:       https://img.shields.io/badge/Unity%20Editor-2017.2.1f1-green.svg
 
-### 2. [Import the Mixed Reality Toolkit asset](https://github.com/Microsoft/MixedRealityToolkit-Unity/releases)
+> The Mixed Reality Toolkit now recommends the following Unity 3D version:
+> [![Github Release][unity-version-badge]][unity-release] 
 
-> The Mixed Reality Toolkit is available via [multiple delivery mechanisms](/Documentation/DownloadingTheMRTK.md) and in the future will also be available via the Unity package manager once Unity makes that option available.
+_Note: Be sure to include the Windows Store .NET scripting backend components._
 
-Get the asset and import it in to your Unity project using  "Asset -> Import Package -> Custom Package" from the Unity Editor menu.
+![Unity Installer](/External/ReadMeImages/UnityInstaller.PNG "Unity Installer")
 
-![](/Documentation/ReadMeImages/Unity_ImportAssetOption.png)
+# 2. Download the MixedRealityToolkit-Unity asset packages
+You can download the latest unity package from [Releases](https://github.com/Microsoft/MixedRealityToolkit-Unity/releases) folder.
 
-Accept all the content and continue.
+_Note: The latest release should work for both HoloLens and Windows Mixed Reality development._
 
-![](/Documentation/ReadMeImages/MRTK_AssetImportDialog.png)
+[unity-release1]:                https://github.com/Microsoft/MixedRealityToolkit-Unity/releases/latest
+[mrtk-version-badge]:            https://img.shields.io/github/tag/microsoft/MixedRealityToolkit-unity.svg?style=flat-square&label=Latest%20Master%20Branch%20Release&colorB=007ec6
+[![Github Release][mrtk-version-badge]][unity-release1]
 
-> The SDK is optional but highly recommended for new users.  Once you have a feel for how the toolkit works, you can remove these safely if you are not using them.
+### Using the source code
+Optionally, If you'd like to build the Mixed Reality Toolkit from the source, you'll need to clone the GitHub repository from:
 
-> The MRTK also provides a [separate "Examples" asset](https://github.com/Microsoft/MixedRealityToolkit-Unity/releases), which currently contains demonstration scenes for current MRTK features.  In the future this will also contain educational "Example" scenes to aid with learning implementation tricks with the toolkit.
+>  ## https://github.com/Microsoft/MixedRealityToolkit-Unity.git. 
 
-### 3. Accept the Setup prompt (optional)
-![](/Documentation/ReadMeImages/MRTK_UnitySetupPrompt.png)
+If you've never cloned a repo before then you should consider using the GitHub desktop client, see https://desktop.github.com/ for more information.
 
-Once imported, the MRTK will attempt to setup your project automatically for building Mixed Reality solutions, namely setting:
+> ### (optional) Preparing an asset package from the source code
+> Open the folder you just cloned in Unity.
+> Now, inside of Unity ensure you have the Assets folder selected in the project view, and export the package. 
+>
+> **IMPORTANT:** Make sure you select the root Assets folder in the Project. It contains important .rsp files like csc, gmcs and smcs.
+>
+> `Assets -> Export Package…`
 
-* Enable XR Settings for your current platform (enabling the XR checkbox)
-> Note, you need to do this for each platform you wish to deploy on
-* Force Text Serialization / Visible Meta files (recommended for Unity projects using source control)
-* Change the Scripting back-end to use IL2CPP (as Unity is deprecating the .NET scripting back-end)
+# 3. Adding the MixedRealityToolkit-Unity package in your project
 
-> The only option which is mandatory (and not listed above) is to set Unity to use the .NET 4 scripting runtime by default, as the MRTK uses advanced coding functions only available in .NET4+.  
-> From Unity 2018.3 and above, this will be the default for new Unity Projects.
+Open or create your project in Unity.
 
-This prompt will automatically set the above options for you and restart Unity (for the .NET update) ready to start building your MRTK project.
+Then import the MRTK asset using `Assets -> Import Package -> Custom Package…` [Navigate to the package 
+you have either downloaded or exported above].
 
-Accepting these options is completely optional (except .NET 4), if you click **Later**, the MRTK will not ask you again and leave you to it.  You can then choose to set these options manually later as you see fit.
+> **NOTE**: If you've prepared the source code yourself, The HoloToolkit-Examples and HoloToolkit-Test folders (and all its content and subfolders) are optional when you import the custom package. You can uncheck those folders in the **Import Unity Package** window that shows all the contents of the package before performing the import.   
 
-### 4. Configure your first Mixed Reality Toolkit scene
+You should now have a `Mixed Reality Toolkit` menu item in the Unity editor.
 
-The toolkit has been designed so that there is just one object that is mandatory in your scene.  This is there to provide the core configuration and runtime for the Mixed Reality Toolkit (one of the key advantages in the new framework).
+_Note: This process should be repeated for the examples and test asset packages as well._
 
-Configuring your scene is extremely simple by simply selecting the following from the Editor menu:
-> Mixed Reality Toolkit -> Configure
+# 4. Preparing your project for Mixed Reality Content
 
-![](/Documentation/ReadMeImages/MRTK_ConfigureScene.png)
+Select the "Apply Mixed Reality Project Settings" option in the Unity Editor: 
 
-Once this completes, you will see the following in your Scene hierarchy:
+` Mixed Reality Toolkit -> Configure -> Apply Mixed Reality Project Settings`
 
-![](/Documentation/ReadMeImages/MRTK_SceneSetup.png)
+![MRTK Editor Project Settings](/External/ReadMeImages/MixedRealityProjectEditorOption.png)
 
-> The MRTK will also select the configured profile, [click here for more details on this configuration screens](#configuring)
+Select all the required options for your Project type:
 
-Which contains the following:
+![MRTK Project Options](/External/ReadMeImages/MixedRealityProjectOptions.png)
 
-* Mixed Reality Toolkit - The toolkit itself, providing the central configuration entry point for the entire framework.
-* MixedRealityPlayspace - The parent object for the headset, which ensures the headset / controllers and other required systems are managed correctly in the scene.
-* The Main Camera is moved as a child to the Playspace - Which allows the playspace to manage the camera in conjunction with the SDK's
-* UIRaycastCamera added as a child to the Main Camera - To enable seamless UI interactions through the toolkit
+Check:
+* For Immersive headsets, check the **Target Occluded Devices** option
+* For HoloLens, leave this option *Unchecked*
 
-> **Note** While working in your scene, **DON'T move the Main Camera** (or the playspace) from the scene origin (0,0,0).  This is controlled by the MRTK and the active SDK.
-> If you need to move the players start point, then **move the scene content and NOT the camera**!
+> **Note**
+> If you enable the **Enable Xbox Controller Support** option, this will download the ProjectSettings Input file and replace your current version in your project and override any existing input settings, the old file will be renamed to "*.Old*".
+> Else, you will have to setup all the MRTK input axis manually.
 
-### 5. Hit play
+# 5. Preparing a Scene for Mixed Reality Content
 
-You are now ready to start building your Mixed Reality Solution, just start adding content and get building.
-Switch to other platforms (ensure they have XR enabled in their player settings) and your project will still run as expected without change.
+Select the "Apply Mixed Reality Scene Settings" option in the Unity Editor: 
 
-<a name="configuring"/>
+` Mixed Reality Toolkit -> Configure -> Apply Mixed Reality Scene Settings`
 
-## Configuring your project
+![MRTK Editor Scene Settings](/External/ReadMeImages/MixedRealityEditorSceneSettings.png)
 
-The Mixed Reality Toolkit configuration is all centralized on one place and attached to the MixedRealityToolkit object in your active scene.
+Select all the required options for your Scene type:
 
-![](/Documentation/HowTo/MixedRealityToolkitConfigurationProfileScreens/MRTK_ActiveConfiguration.png)
+![MRTK Scene options](/External/ReadMeImages/MixedRealitySceneOptions.png)
 
-Clicking on this profile will show the configuration screens for the Mixed Reality Toolkit:
+Alternatively, you can setup your scene manually as follows:
 
-![](/Documentation/HowTo/MixedRealityToolkitConfigurationProfileScreens/MRTK_MixedRealityToolkitConfigurationScreen.png)
+1. Create a new Scene: `File -> New Scene`
 
-From here you can navigate to all the configuration profiles for the MRTK, including:
+2. Remove the default `Main Camera` and `Directional Light` objects in the scene.
 
-> The "Default" profiles provided by the Mixed Reality Toolkit are locked by default, so when you view these in the inspector they will appear greyed out.  This is to ensure you always have a common default for any project.  We recommend you create your own profiles (see below) when you need to customize the configuration for your project.
+3. Add the `MixedRealityCameraParent.prefab` (found under HoloToolkit/Input/Prefabs). Check the configured options for the Parent and child camera meet your requirements.
 
-* Main Mixed Reality Toolkit Configuration
-* Camera Settings
-* Input System Settings
-* Boundary Visualization Settings
-* Teleporting Settings
-* Spatial Awareness Settings
-* Diagnostics Settings
-* Additional Services Settings
-* Input Actions Settings
-* Input Actions Rules
-* Pointer Configuration
-* Gestures Configuration
-* Speech Commands
-* Controller Mapping Configuration
-* Controller Visualization Settings
+4. Add the `InputManager.prefab` (found under HoloToolkit/Input/Prefabs), which will add a new **InputManager** Prefab which contains the all-important UI **EventSystem** object.
 
-As you can see there are lots of options available and more will come available as we progress through the beta.
+5. Add the `DefaultCursor.prefab` (found under HoloToolkit/Input/Prefabs/Cursor) and add that Object to the **InputManager** Cursor parameter (to avoid it being searched for on scene start) 
 
-When you start a new project, we provide a default set of configurations with every option turned on, styled for a fully cross platform project.  These defaults are "Locked" to ensure you always have a common start point for your project and we encourage you to start defining your own settings as your project evolves.  For this we provide options to either:
+> **For Hololens**
+> Optionally, if you wish to enable spatial mapping in your scene for HoloLens, you can add the `SpatialMapping.prefab` (found under HoloToolkit/SpatialMapping/Prefabs) to your 'Managers' object.  Be aware that you must also enable `Spatial Perception` Capabilities: `Edit/Project Settings/Player -> Inspector -> Publishing Settings/Capabilities`.
 
-* Copy the defaults in to a new profile for you to start customizing it for your project
-* Start afresh with a brand-new profile.
+# 5 Building your project 
+The MRTK provides you a quick and easy way to generate your Unity project from a custom window, which can be found under:
 
-![](/Documentation/ReadMeImages/MRTK_CopyCreateConfigurationOptions.png)
+`Mixed Reality Toolkit -> Build Window`
 
-When profiles are created by the MRTK, they are then placed in the following folder:
+![MRTK Build Window](/External/ReadMeImages/MixedRealityEditorBuildWindow.png)
 
-> "Assets\MixedRealityToolkit-Generated\CustomProfiles"
+This window offers many quick options to be able to:
 
-At each step in the configuration, you can choose to remove and create a new profile, or simply copy the existing settings and continue to customize:
+* Build your UWP C# solution
+* Build your project APPX
+* (HoloLens) Deploy your project to a remote device
 
-![](/Documentation/ReadMeImages/MRTK_CopyProfileOptions.png)
+![Build Window](/External/ReadMeImages/BuildWindow.PNG)
 
-### **[For more information on customizing the Configuration Profiles](/Documentation/MixedRealityConfigurationGuide.md)**
-Please check out the [Mixed Reality Configuration Guide](/Documentation/MixedRealityConfigurationGuide.md)
+_Note: You should always target the lastest Windows SDK in all builds._
 
-## Get building your project
+## 5.1 Running your project for **Immersive Headsets**
+Unity supports running your Immersive solution direct from the editor **BUT** Only when the Mixed Reality Portal is running.
+> Unity may resolve this in the future and auto-start the portal, but it is better to have it running beforehand!
 
-Now your project is up and running, you can start building your Mixed Reality project.  
+1. Start the MR Portal
+2. Plug-in and wake up the headset or [start the Simulator](https://developer.microsoft.com/en-us/windows/mixed-reality/using_the_windows_mixed_reality_simulator)
+3. Make sure the "Cliffhouse" is displayed in the Headset
+4. Select the scene you want to run
+5. Hit Play in the Unity Editor
 
-For more information on the rest of the toolkit, please check the following guides:
+Provided everything was good, you should now see your scene running in the headset/simulator.
 
-* [Mixed Reality Configuration Guide](/Documentation/MixedRealityConfigurationGuide.md)
-* [Getting to know the Mixed Reality Toolkit Input System]() (Coming Soon)
-* [Customizing your controllers in the MRTK]() (Coming Soon)
-* [A walkthrough the UX components of the MRTK SDK]() (Coming Soon)
-* [Using Solvers to bind your objects together]() (Coming Soon)
-* [Creating interactions between the player and your project]() (Coming Soon)
-* [Configuration Profile Usage Guide]() (Coming Soon)
-* [Guide to building Registered Services]() (Coming Soon)
-* [Guide to Pointers documentation]() (Coming Soon)
+Alternatively, either Use the Unity Build options or the MRTK Build window to generate the UWP package and run locally on your machine.
+
+## 5.2 Running your project for **HoloLens**
+
+ 1. Be sure to plug in your HoloLens via usb.
+ 2. Open the above Build Window: `Mixed Reality Toolkit -> Build Window`.
+ 3. Under `Deploy` be sure to fill out the device **Username** and **Password** fields.
+ 4. In the `Quick Options` section, press the "`Build SLN, Build APPX, then Install`" button to deploy to HoloLens.
+
+> Optionally, you can use the [default build steps if needed](https://docs.unity3d.com/Manual/windowsholographic-startup.html).
+
+# 6. Deploying your project
+Once you are ready to deploy to a platform and have built your UWP project, you need to get it on to the device to run, package and ship it to the store.
+
+## 6.1 Deploying your **Immersive** app using Visual Studio
+
+ 1. Navigate to the Build Window: `Mixed Reality Toolkit -> Build Window`.
+ 2. Press `Open Project Solution` to open the project in Visual Studio.
+ 3. Select **x64** in your build configuration options.
+ 4. In the debug toolbar, select "Local Machine" as the target. (or remote device if you are pushing to another machine)
+ 5. Run the app by hitting play.
+
+ See the [Windows Developer site](https://developer.microsoft.com/en-us/store/publish-apps) for publishing to the Microsoft Store.
+
+
+## 6.2 Deploying your **HoloLens** app using Visual Studio
+
+ 1. Navigate to the Build Window: `Mixed Reality Toolkit -> Build Window`.
+ 2. Press `Open Project Solution` to open the project in Visual Studio.
+ 3. Select **x86** in your build configuration options.
+ 4. In the debug toolbar, select the emulator or the device that you're using.
+ 5. Run the app using the debug toolbar.
